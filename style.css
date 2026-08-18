@@ -1,0 +1,811 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #07090f;
+    color: #f4f7ff;
+    font-family: Inter, Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* =========================
+   CURSOR GLOW
+========================= */
+
+.cursor-glow {
+    position: fixed;
+    width: 420px;
+    height: 420px;
+
+    left: 0;
+    top: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 190, 255, 0.12) 0%,
+            rgba(0, 120, 255, 0.06) 30%,
+            transparent 70%
+        );
+
+    transform: translate(-50%, -50%);
+
+    z-index: 0;
+
+    transition:
+        width 0.25s ease,
+        height 0.25s ease;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    position: fixed;
+
+    top: 18px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(1100px, calc(100% - 40px));
+
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 24px;
+
+    background: rgba(10, 13, 22, 0.72);
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(18px);
+
+    z-index: 100;
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+.logo {
+    font-size: 20px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+    color: white;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 28px;
+}
+
+.navbar nav a {
+    color: #8e98aa;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition:
+        color 0.2s ease;
+}
+
+.navbar nav a:hover {
+    color: #45d8ff;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding:
+        140px 20px
+        100px;
+
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 174, 255, 0.11),
+            transparent 65%
+        );
+
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+
+    max-width: 850px;
+
+    z-index: 2;
+}
+
+.badge {
+    display: inline-flex;
+
+    padding:
+        8px 14px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(44, 183, 255, 0.08);
+
+    border:
+        1px solid rgba(44, 183, 255, 0.25);
+
+    color:
+        #5cdbff;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        2px;
+
+    margin-bottom:
+        28px;
+}
+
+.hero h1 {
+    font-size:
+        clamp(52px, 8vw, 96px);
+
+    line-height:
+        0.95;
+
+    letter-spacing:
+        -5px;
+
+    font-weight:
+        900;
+
+    margin-bottom:
+        30px;
+}
+
+.hero h1 span {
+    display: block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #44d7ff,
+            #7a7cff
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+}
+
+.hero p {
+    max-width:
+        620px;
+
+    margin:
+        0 auto 38px;
+
+    color:
+        #8994a8;
+
+    font-size:
+        18px;
+
+    line-height:
+        1.7;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+}
+
+.primary-button,
+.secondary-button,
+.download-button,
+.discord-button {
+    text-decoration: none;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        14px 24px;
+
+    border-radius:
+        12px;
+
+    font-size:
+        13px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.primary-button {
+    color:
+        #031017;
+
+    background:
+        linear-gradient(
+            135deg,
+            #52e1ff,
+            #4c8dff
+        );
+
+    box-shadow:
+        0 10px 35px
+        rgba(49, 190, 255, 0.2);
+}
+
+.primary-button:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 15px 45px
+        rgba(49, 190, 255, 0.35);
+}
+
+.secondary-button {
+    color:
+        #dbe8f5;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+}
+
+.secondary-button:hover {
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(68, 213, 255, 0.4);
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.hero-status {
+    margin-top:
+        25px;
+
+    color:
+        #687488;
+
+    font-size:
+        12px;
+
+    letter-spacing:
+        1px;
+}
+
+.status-dot {
+    width:
+        7px;
+
+    height:
+        7px;
+
+    display:
+        inline-block;
+
+    margin-right:
+        8px;
+
+    border-radius:
+        50%;
+
+    background:
+        #42e6a4;
+
+    box-shadow:
+        0 0 15px
+        rgba(66, 230, 164, 0.8);
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.features-section {
+    max-width:
+        1100px;
+
+    margin:
+        auto;
+
+    padding:
+        120px 20px;
+}
+
+.section-title {
+    margin-bottom:
+        50px;
+}
+
+.section-title span {
+    color:
+        #45d8ff;
+
+    font-size:
+        12px;
+
+    letter-spacing:
+        3px;
+}
+
+.section-title h2 {
+    font-size:
+        clamp(36px, 5vw, 58px);
+
+    margin:
+        12px 0;
+
+    letter-spacing:
+        -2px;
+}
+
+.section-title p {
+    color:
+        #788398;
+
+    font-size:
+        17px;
+}
+
+.feature-grid {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        18px;
+}
+
+.feature-card {
+    position:
+        relative;
+
+    padding:
+        32px;
+
+    min-height:
+        220px;
+
+    border-radius:
+        22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.045),
+            rgba(255,255,255,0.015)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+    overflow:
+        hidden;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.feature-card::after {
+    content: "";
+
+    position:
+        absolute;
+
+    width:
+        180px;
+
+    height:
+        180px;
+
+    right:
+        -90px;
+
+    bottom:
+        -90px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(53,205,255,0.12),
+            transparent 70%
+        );
+}
+
+.feature-card:hover {
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(64,214,255,0.25);
+}
+
+.feature-number {
+    color:
+        #4edaff;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        2px;
+
+    margin-bottom:
+        45px;
+}
+
+.feature-card h3 {
+    font-size:
+        24px;
+
+    margin-bottom:
+        12px;
+}
+
+.feature-card p {
+    color:
+        #7f8ba0;
+
+    line-height:
+        1.7;
+
+    max-width:
+        420px;
+}
+
+
+/* =========================
+   DOWNLOAD
+========================= */
+
+.download-section {
+    max-width:
+        1100px;
+
+    margin:
+        auto;
+
+    padding:
+        80px 20px;
+}
+
+.download-box {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        30px;
+
+    padding:
+        42px;
+
+    border-radius:
+        26px;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(42,178,255,0.1),
+            rgba(100,75,255,0.06)
+        );
+
+    border:
+        1px solid
+        rgba(79,209,255,0.16);
+}
+
+.download-label {
+    color:
+        #4edaff;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        3px;
+
+    margin-bottom:
+        12px;
+}
+
+.download-box h2 {
+    font-size:
+        32px;
+
+    margin-bottom:
+        8px;
+}
+
+.download-box p {
+    color:
+        #7e899c;
+}
+
+.download-button {
+    color:
+        #041017;
+
+    background:
+        #4bdcff;
+
+    white-space:
+        nowrap;
+}
+
+.download-button:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 15px 40px
+        rgba(65,217,255,0.25);
+}
+
+
+/* =========================
+   DISCORD
+========================= */
+
+.discord-section {
+    padding:
+        150px 20px;
+
+    text-align:
+        center;
+}
+
+.discord-content {
+    max-width:
+        700px;
+
+    margin:
+        auto;
+}
+
+.discord-content span {
+    color:
+        #788398;
+
+    font-size:
+        11px;
+
+    letter-spacing:
+        3px;
+
+    font-weight:
+        800;
+}
+
+.discord-content h2 {
+    font-size:
+        clamp(38px, 6vw, 65px);
+
+    letter-spacing:
+        -3px;
+
+    margin:
+        18px 0;
+}
+
+.discord-content p {
+    color:
+        #7e899c;
+
+    margin-bottom:
+        30px;
+}
+
+.discord-button {
+    color:
+        white;
+
+    background:
+        #5865f2;
+
+    box-shadow:
+        0 10px 35px
+        rgba(88,101,242,0.2);
+}
+
+.discord-button:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 15px 45px
+        rgba(88,101,242,0.35);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    max-width:
+        1100px;
+
+    margin:
+        auto;
+
+    padding:
+        30px 20px 45px;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.06);
+
+    color:
+        #626d80;
+
+    font-size:
+        12px;
+}
+
+footer div {
+    color:
+        #dbe4f0;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        3px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (
+    max-width: 700px
+) {
+
+    .navbar {
+        width:
+            calc(100% - 20px);
+    }
+
+    .navbar nav {
+        display:
+            none;
+    }
+
+    .hero h1 {
+        letter-spacing:
+            -3px;
+    }
+
+    .feature-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .download-box {
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+    }
+
+    footer {
+        flex-direction:
+            column;
+
+        gap:
+            12px;
+    }
+}
