@@ -1,17 +1,21 @@
 const glow = document.querySelector(".cursor-glow");
+const dot = document.querySelector(".cursor-dot");
 
-let mouseX = window.innerWidth / 2;
-let mouseY = window.innerHeight / 2;
+let mouseX = innerWidth / 2;
+let mouseY = innerHeight / 2;
 
 let glowX = mouseX;
 let glowY = mouseY;
 
+let dotX = mouseX;
+let dotY = mouseY;
+
 
 /* =========================
-   SMOOTH CURSOR GLOW
+   SMOOTH CURSOR
 ========================= */
 
-document.addEventListener("mousemove", (event) => {
+window.addEventListener("mousemove", (event) => {
 
     mouseX = event.clientX;
     mouseY = event.clientY;
@@ -19,169 +23,339 @@ document.addEventListener("mousemove", (event) => {
 });
 
 
-function animateGlow() {
+function cursorLoop() {
 
-    glowX += (mouseX - glowX) * 0.12;
-    glowY += (mouseY - glowY) * 0.12;
+    glowX +=
+        (mouseX - glowX) * 0.08;
 
-    glow.style.left = `${glowX}px`;
-    glow.style.top = `${glowY}px`;
+    glowY +=
+        (mouseY - glowY) * 0.08;
 
-    requestAnimationFrame(animateGlow);
+    dotX +=
+        (mouseX - dotX) * 0.35;
+
+    dotY +=
+        (mouseY - dotY) * 0.35;
+
+    glow.style.left =
+        `${glowX}px`;
+
+    glow.style.top =
+        `${glowY}px`;
+
+    dot.style.left =
+        `${dotX}px`;
+
+    dot.style.top =
+        `${dotY}px`;
+
+    requestAnimationFrame(
+        cursorLoop
+    );
 
 }
 
-animateGlow();
+cursorLoop();
 
 
 /* =========================
-   BUTTON GLOW
+   MAGNETIC BUTTONS
 ========================= */
 
-const buttons = document.querySelectorAll(
-    ".primary-button, .secondary-button, .download-button, .discord-button"
-);
+const magneticElements =
+    document.querySelectorAll(".magnetic");
 
-buttons.forEach((button) => {
+magneticElements.forEach((element) => {
 
-    button.addEventListener("mouseenter", () => {
+    element.addEventListener(
+        "mousemove",
+        (event) => {
 
-        glow.style.width = "520px";
-        glow.style.height = "520px";
+            const rect =
+                element.getBoundingClientRect();
 
-    });
+            const x =
+                event.clientX -
+                rect.left -
+                rect.width / 2;
 
-    button.addEventListener("mouseleave", () => {
+            const y =
+                event.clientY -
+                rect.top -
+                rect.height / 2;
 
-        glow.style.width = "420px";
-        glow.style.height = "420px";
+            element.style.transform =
+                `translate(${x * 0.12}px, ${y * 0.12}px)`;
 
-    });
+        }
+    );
+
+
+    element.addEventListener(
+        "mouseleave",
+        () => {
+
+            element.style.transform =
+                "";
+
+        }
+    );
 
 });
+
+
+/* =========================
+   CURSOR INTERACTION
+========================= */
+
+const interactive =
+    document.querySelectorAll(
+        "a, .feature-card, .app-window"
+    );
+
+interactive.forEach((element) => {
+
+    element.addEventListener(
+        "mouseenter",
+        () => {
+
+            glow.style.width =
+                "600px";
+
+            glow.style.height =
+                "600px";
+
+            dot.style.transform =
+                "translate(-50%, -50%) scale(2)";
+
+        }
+    );
+
+
+    element.addEventListener(
+        "mouseleave",
+        () => {
+
+            glow.style.width =
+                "430px";
+
+            glow.style.height =
+                "430px";
+
+            dot.style.transform =
+                "translate(-50%, -50%) scale(1)";
+
+        }
+    );
+
+});
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+const observer =
+    new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach(
+                (entry) => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target
+                            .classList
+                            .add("visible");
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+revealElements.forEach(
+    (element) => {
+
+        observer.observe(element);
+
+    }
+);
 
 
 /* =========================
    FEATURE CARD TILT
 ========================= */
 
-const cards = document.querySelectorAll(".feature-card");
+const cards =
+    document.querySelectorAll(
+        ".feature-card"
+    );
 
 cards.forEach((card) => {
 
-    card.addEventListener("mousemove", (event) => {
+    card.addEventListener(
+        "mousemove",
+        (event) => {
 
-        const rect = card.getBoundingClientRect();
+            const rect =
+                card.getBoundingClientRect();
 
-        const x =
-            event.clientX - rect.left;
+            const x =
+                event.clientX -
+                rect.left;
 
-        const y =
-            event.clientY - rect.top;
+            const y =
+                event.clientY -
+                rect.top;
 
-        const centerX =
-            rect.width / 2;
+            const rotateY =
+                ((x - rect.width / 2) /
+                    rect.width) * 5;
 
-        const centerY =
-            rect.height / 2;
+            const rotateX =
+                ((y - rect.height / 2) /
+                    rect.height) * -5;
 
-        const rotateX =
-            ((y - centerY) / centerY) * -2;
+            card.style.transform =
+                `perspective(900px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-5px)`;
 
-        const rotateY =
-            ((x - centerX) / centerX) * 2;
-
-        card.style.transform =
-            `perspective(700px)
-             rotateX(${rotateX}deg)
-             rotateY(${rotateY}deg)
-             translateY(-4px)`;
-
-    });
+        }
+    );
 
 
-    card.addEventListener("mouseleave", () => {
+    card.addEventListener(
+        "mouseleave",
+        () => {
 
-        card.style.transform =
-            "";
+            card.style.transform =
+                "";
 
-    });
+        }
+    );
 
 });
 
 
 /* =========================
-   REVEAL ON SCROLL
+   FAKE APP CPS ANIMATION
 ========================= */
 
-const revealElements = document.querySelectorAll(
-    ".feature-card, .download-box, .discord-content"
-);
+const cps =
+    document.getElementById(
+        "fakeCps"
+    );
 
-const observer = new IntersectionObserver(
-    (entries) => {
+let currentCps = 100;
 
-        entries.forEach((entry) => {
+function animateCps() {
 
-            if (entry.isIntersecting) {
+    if (!cps) return;
 
-                entry.target.classList.add(
-                    "visible"
-                );
+    currentCps +=
+        (Math.random() - 0.5) * 3;
 
-                observer.unobserve(
-                    entry.target
-                );
+    currentCps =
+        Math.max(
+            96,
+            Math.min(
+                104,
+                currentCps
+            )
+        );
+
+    cps.textContent =
+        Math.round(currentCps);
+
+    requestAnimationFrame(
+        animateCps
+    );
+
+}
+
+animateCps();
+
+
+/* =========================
+   SMOOTH ANCHORS
+========================= */
+
+document
+    .querySelectorAll(
+        'a[href^="#"]'
+    )
+    .forEach((link) => {
+
+        link.addEventListener(
+            "click",
+            (event) => {
+
+                const id =
+                    link.getAttribute(
+                        "href"
+                    );
+
+                const target =
+                    document.querySelector(
+                        id
+                    );
+
+                if (!target) return;
+
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
 
             }
+        );
 
-        });
+    });
+
+
+/* =========================
+   PARALLAX BACKGROUND
+========================= */
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const scroll =
+            window.scrollY;
+
+        document
+            .querySelector(".orb-one")
+            .style.transform =
+            `translateY(${scroll * 0.08}px)`;
+
+        document
+            .querySelector(".orb-two")
+            .style.transform =
+            `translateY(${scroll * -0.05}px)`;
 
     },
     {
-        threshold: 0.12
+        passive: true
     }
 );
-
-
-revealElements.forEach((element) => {
-
-    element.classList.add(
-        "reveal"
-    );
-
-    observer.observe(
-        element
-    );
-
-});
-
-
-/* =========================
-   SMOOTH ANCHOR NAVIGATION
-========================= */
-
-document.querySelectorAll(
-    'a[href^="#"]'
-).forEach((link) => {
-
-    link.addEventListener("click", (event) => {
-
-        const targetId =
-            link.getAttribute("href");
-
-        const target =
-            document.querySelector(targetId);
-
-        if (!target) return;
-
-        event.preventDefault();
-
-        target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-    });
-
-});
