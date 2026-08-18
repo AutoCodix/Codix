@@ -6,72 +6,276 @@
 
     <title>Codix — AutoClicker</title>
 
+    <meta
+        name="description"
+        content="Codix AutoClicker V3 — fast, lightweight and built for control."
+    >
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- BACKGROUND -->
+
+    <div class="noise"></div>
+    <div class="grid"></div>
+
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+    <div class="orb orb-three"></div>
+
     <div class="cursor-glow"></div>
+    <div class="cursor-dot"></div>
+
+
+    <!-- NAVBAR -->
 
     <header class="navbar">
 
-        <div class="logo">
-            CODIX
-        </div>
+        <a class="brand" href="#top">
+            <span class="brand-mark">C</span>
+            <span>CODIX</span>
+        </a>
 
         <nav>
             <a href="#features">Features</a>
+            <a href="#showcase">Preview</a>
             <a href="#download">Download</a>
-            <a href="#discord">Discord</a>
         </nav>
+
+        <a
+            class="nav-download magnetic"
+            href="https://github.com/AutoCodix/Codix-AutoClicker/releases/latest"
+            target="_blank"
+        >
+            GET V3
+        </a>
 
     </header>
 
 
-    <main>
+    <main id="top">
+
+        <!-- HERO -->
 
         <section class="hero">
 
             <div class="hero-content">
 
-                <div class="badge">
-                    CODIX AUTOCLICKER V3
+                <div class="status-pill reveal">
+                    <span class="live-dot"></span>
+                    V3.0.0 · FREE · AVAILABLE NOW
                 </div>
 
-                <h1>
-                    Click faster.
-                    <span>Stay in control.</span>
+                <h1 class="hero-title reveal">
+
+                    <span>CLICK</span>
+
+                    <span class="gradient-text">
+                        WITHOUT LIMITS.
+                    </span>
+
                 </h1>
 
-                <p>
-                    A fast, lightweight autoclicker built with
-                    precision, performance and a clean interface.
+                <p class="hero-description reveal">
+
+                    Codix is a fast, lightweight autoclicker
+                    designed around precision, control and
+                    a ridiculously clean interface.
+
                 </p>
 
-                <div class="hero-buttons">
+
+                <div class="hero-actions reveal">
 
                     <a
-                        class="primary-button"
-                        href="#download"
+                        class="button primary magnetic"
+                        href="https://github.com/AutoCodix/Codix-AutoClicker/releases/latest"
+                        target="_blank"
                     >
-                        DOWNLOAD V3
+                        <span>DOWNLOAD V3</span>
+                        <span class="arrow">↗</span>
                     </a>
 
                     <a
-                        class="secondary-button"
+                        class="button secondary magnetic"
                         href="https://github.com/AutoCodix/Codix-AutoClicker"
                         target="_blank"
                     >
-                        GITHUB
+                        VIEW SOURCE
                     </a>
 
                 </div>
 
-                <div class="hero-status">
 
-                    <span class="status-dot"></span>
+                <div class="hero-meta reveal">
 
-                    V3.0.0 · FREE
+                    <div>
+                        <strong>1–1000</strong>
+                        <span>CPS</span>
+                    </div>
+
+                    <div>
+                        <strong>0</strong>
+                        <span>INSTALLERS</span>
+                    </div>
+
+                    <div>
+                        <strong>F6</strong>
+                        <span>EMERGENCY STOP</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="scroll-indicator">
+
+                <span>SCROLL TO EXPLORE</span>
+
+                <div class="scroll-line"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SHOWCASE -->
+
+        <section
+            id="showcase"
+            class="showcase section"
+        >
+
+            <div class="section-heading reveal">
+
+                <span class="eyebrow">
+                    01 / THE INTERFACE
+                </span>
+
+                <h2>
+                    Built to look
+                    <span>as fast as it feels.</span>
+                </h2>
+
+                <p>
+                    No ancient Windows panels.
+                    No clutter. Just Codix.
+                </p>
+
+            </div>
+
+
+            <div class="app-stage reveal">
+
+                <div class="app-window">
+
+                    <div class="app-topbar">
+
+                        <div class="window-brand">
+                            <span class="mini-logo">C</span>
+                            CODIX
+                        </div>
+
+                        <div class="window-controls">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="app-body">
+
+                        <aside class="app-sidebar">
+
+                            <div class="side-active">
+                                <span>◈</span>
+                                CLICKER
+                            </div>
+
+                            <div>
+                                <span>⌨</span>
+                                HOTKEYS
+                            </div>
+
+                            <div>
+                                <span>⚙</span>
+                                SETTINGS
+                            </div>
+
+                        </aside>
+
+
+                        <div class="app-main">
+
+                            <div class="app-label">
+                                CLICK ENGINE
+                            </div>
+
+                            <div class="cps-display">
+
+                                <strong id="fakeCps">
+                                    100
+                                </strong>
+
+                                <span>CPS</span>
+
+                            </div>
+
+
+                            <div class="fake-slider">
+
+                                <div class="slider-fill"></div>
+
+                                <div class="slider-knob"></div>
+
+                            </div>
+
+
+                            <div class="control-row">
+
+                                <div class="control-card">
+
+                                    <span>MODE</span>
+
+                                    <strong>TOGGLE</strong>
+
+                                </div>
+
+                                <div class="control-card">
+
+                                    <span>HOTKEY</span>
+
+                                    <strong>MOUSE 5</strong>
+
+                                </div>
+
+                                <div class="control-card">
+
+                                    <span>BUTTON</span>
+
+                                    <strong>LEFT</strong>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="engine-status">
+
+                                <span class="status-pulse"></span>
+
+                                ENGINE READY
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -80,49 +284,57 @@
         </section>
 
 
+        <!-- FEATURES -->
+
         <section
             id="features"
-            class="features-section"
+            class="features section"
         >
 
-            <div class="section-title">
+            <div class="section-heading reveal">
 
-                <span>01</span>
+                <span class="eyebrow">
+                    02 / FEATURES
+                </span>
 
                 <h2>
-                    Built to click.
+                    Everything you need.
+                    <span>Nothing you don't.</span>
                 </h2>
-
-                <p>
-                    Everything you need. Nothing you don't.
-                </p>
 
             </div>
 
 
             <div class="feature-grid">
 
-                <div class="feature-card">
+                <article class="feature-card big reveal">
 
-                    <div class="feature-number">
+                    <div class="card-icon">
                         01
                     </div>
 
-                    <h3>
-                        1–1000 CPS
-                    </h3>
+                    <div class="card-content">
 
-                    <p>
-                        Choose exactly how fast you want
-                        Codix to click.
-                    </p>
+                        <h3>
+                            1–1000 CPS
+                        </h3>
 
-                </div>
+                        <p>
+                            Full control over your click
+                            speed, from precise single
+                            clicks to extreme rates.
+                        </p>
+
+                    </div>
+
+                    <div class="card-glow"></div>
+
+                </article>
 
 
-                <div class="feature-card">
+                <article class="feature-card reveal">
 
-                    <div class="feature-number">
+                    <div class="card-icon">
                         02
                     </div>
 
@@ -131,16 +343,18 @@
                     </h3>
 
                     <p>
-                        Use your mouse or keyboard to
-                        activate the clicker.
+                        Bind your activation to a
+                        keyboard key or mouse button.
                     </p>
 
-                </div>
+                    <div class="card-glow"></div>
+
+                </article>
 
 
-                <div class="feature-card">
+                <article class="feature-card reveal">
 
-                    <div class="feature-number">
+                    <div class="card-icon">
                         03
                     </div>
 
@@ -149,65 +363,116 @@
                     </h3>
 
                     <p>
-                        Hold your activation key or
-                        toggle Codix whenever you want.
+                        Choose exactly how Codix
+                        responds to your input.
                     </p>
 
-                </div>
+                    <div class="card-glow"></div>
+
+                </article>
 
 
-                <div class="feature-card">
+                <article class="feature-card reveal">
 
-                    <div class="feature-number">
+                    <div class="card-icon">
                         04
                     </div>
 
                     <h3>
-                        Emergency Stop
+                        Lightweight
                     </h3>
 
                     <p>
-                        F6 instantly stops the click
-                        engine whenever you need it.
+                        A focused background engine
+                        without unnecessary overhead.
                     </p>
 
-                </div>
+                    <div class="card-glow"></div>
+
+                </article>
+
+
+                <article class="feature-card big reveal">
+
+                    <div class="card-icon">
+                        05
+                    </div>
+
+                    <div class="card-content">
+
+                        <h3>
+                            Emergency Stop
+                        </h3>
+
+                        <p>
+                            Press F6 and instantly
+                            shut down the click engine.
+                        </p>
+
+                    </div>
+
+                    <div class="emergency-key">
+                        F6
+                    </div>
+
+                    <div class="card-glow red"></div>
+
+                </article>
 
             </div>
 
         </section>
 
 
+        <!-- DOWNLOAD -->
+
         <section
             id="download"
-            class="download-section"
+            class="download section"
         >
 
-            <div class="download-box">
+            <div class="download-panel reveal">
 
-                <div>
+                <div class="download-copy">
 
-                    <div class="download-label">
-                        LATEST RELEASE
-                    </div>
+                    <span class="eyebrow">
+                        03 / GET CODIX
+                    </span>
 
                     <h2>
-                        Codix AutoClicker V3
+                        Ready when
+                        <span>you are.</span>
                     </h2>
 
                     <p>
-                        Free. Portable. No installation required.
+                        Download the latest version
+                        directly from the official Codix
+                        GitHub release.
                     </p>
+
+                    <div class="release-info">
+
+                        <span class="release-dot"></span>
+
+                        V3.0.0 · WINDOWS · FREE
+
+                    </div>
 
                 </div>
 
 
                 <a
-                    class="download-button"
+                    class="download-big magnetic"
                     href="https://github.com/AutoCodix/Codix-AutoClicker/releases/latest"
                     target="_blank"
                 >
-                    DOWNLOAD
+
+                    <span>DOWNLOAD V3</span>
+
+                    <span class="download-arrow">
+                        ↗
+                    </span>
+
                 </a>
 
             </div>
@@ -215,31 +480,35 @@
         </section>
 
 
+        <!-- DISCORD -->
+
         <section
             id="discord"
-            class="discord-section"
+            class="community section"
         >
 
-            <div class="discord-content">
+            <div class="community-box reveal">
 
-                <span>
-                    GOT QUESTIONS?
+                <div class="community-orb"></div>
+
+                <span class="eyebrow">
+                    COMMUNITY
                 </span>
 
                 <h2>
-                    Join the Codix community.
+                    Stay in the loop.
                 </h2>
 
                 <p>
-                    Updates, feedback and future releases.
+                    Updates, feedback and future Codix releases.
                 </p>
 
                 <a
+                    class="button discord magnetic"
                     href="https://discord.gg/dCnPgKhrm3"
                     target="_blank"
-                    class="discord-button"
                 >
-                    JOIN DISCORD
+                    JOIN DISCORD ↗
                 </a>
 
             </div>
@@ -249,15 +518,25 @@
     </main>
 
 
+    <!-- FOOTER -->
+
     <footer>
 
-        <div>
+        <div class="footer-brand">
+            <span class="brand-mark">C</span>
             CODIX
         </div>
 
         <span>
             © 2026 @ap6u
         </span>
+
+        <a
+            href="https://github.com/AutoCodix/Codix-AutoClicker"
+            target="_blank"
+        >
+            GITHUB ↗
+        </a>
 
     </footer>
 
